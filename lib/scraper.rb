@@ -21,6 +21,9 @@ class Scraper
     
 
   def self.scrape_profile_page(profile_url)
+    profile_data = {}
+    
+    student_page = N
     
   end
 
