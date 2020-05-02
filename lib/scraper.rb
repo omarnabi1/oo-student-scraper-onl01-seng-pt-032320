@@ -40,7 +40,13 @@ class Scraper
             flatiron_student[:blog] = social
           end
         end
-
+flatiron_student[:profile_quote] = doc.css("div.profile-quote").text
+        flatiron_student[:bio] = doc.css("div.bio-content.content-holder div.description-holder p").text if doc.css("div.bio-content.content-holder div.description-holder p").text
+     
+        
+        flatiron_student 
+    
+  end
 
 end
 
