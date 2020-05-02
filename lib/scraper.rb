@@ -29,16 +29,18 @@ class Scraper
     
     social_media = doc.css(".social-icon-container").children.css("a").map { |element| element.attr('href')}
     
-      
-      social_media.each do |social|
-        if social.include? ('twitter')
-          flatiron_student[:twitter] = social 
-        elsif social.include? ('linkedin')
-          flatiron_student[:linkedin] = social
-        elsif social.include? ('github')
-          flatiron_student[:github] = social
+    social_media.each do |social|
+          if social.include?('twitter')
+            flatiron_student[:twitter] =  social
+          elsif social.include?('linkedin')
+            flatiron_student[:linkedin] = social
+          elsif social.include?('github')
+            flatiron_student[:github] = social
+          else 
+            flatiron_student[:blog] = social
+          end
         end
-  end
+
 
 end
 
