@@ -24,12 +24,14 @@ class Scraper
     
 
   def self.scrape_profile_page(profile_url)
-    flatiron_student = [ ]
+    flatiron_student = Hash.new
     doc = Nokogiri::HTML(open(profile_url))
     
     social_media = doc.css(".social-icon-container").children.css("a").map { |element| element.attr('href')}
-    
-    social_media.each do |social|
+      
+      
+        
+        social_media.each do |social|
           if social.include?('twitter')
             flatiron_student[:twitter] =  social
           elsif social.include?('linkedin')
@@ -40,13 +42,18 @@ class Scraper
             flatiron_student[:blog] = social
           end
         end
-flatiron_student[:profile_quote] = doc.css("div.profile-quote").text
+
+        flatiron_student[:profile_quote] = doc.css("div.profile-quote").text
         flatiron_student[:bio] = doc.css("div.bio-content.content-holder div.description-holder p").text if doc.css("div.bio-content.content-holder div.description-holder p").text
      
         
         flatiron_student 
-    
+     
+     
+
+
   end
+   
+   
 
 end
-
