@@ -35,7 +35,9 @@ class Scraper
           flatiron_student[:twitter] = social 
         elsif social.include? ('linkedin')
           flatiron_student[:linkedin] = social
-    
+        elsif social.include? ('github')
+          flatiron_student[:github] = social
+        end
   end
 
 end
