@@ -6,13 +6,10 @@ class Scraper
  
 
   def self.scrape_index_page(index_url)
-     flatiron_studentsstudents = [ ]
-    
     doc = Nokogiri::HTML(open(index_url))
-      
-      doc.css("div.roster-cards-container").each do |card|
-        card.css("student-card a").each do |student|
-          
+    flatiron_students = Array.new
+    doc.css("div.roster-cards-container").each do |card|
+      card.css(".student-card a").each do |student|
         profile_link = "#{student.attr('href')}"
         s_location = student.css('.student-location').text
         name = student.css('.student-name').text
